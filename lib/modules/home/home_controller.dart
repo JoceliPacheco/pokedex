@@ -15,11 +15,24 @@ abstract class HomeControllerBase with Store {
   @observable
   int offset = 0;
 
-  int limit = 10;
+  @observable
+  bool loading = false;
+
+  int limit = 20;
 
   loadPokemon() async {
-    listaPokemon = await pokemonRepository.getListaPokemon(offset, limit);
+    List<Pokemon> _lista = listaPokemon;
+
+    loading = true;
+    await Future.delayed(Duration(seconds: 4));
+    _lista.addAll(await pokemonRepository.getListaPokemon(offset, limit));
     offset += limit;
+
+    listaPokemon = _lista;
+
+    loading = false;
+
+    print('listaPokemon => ${listaPokemon.length}');
   }
 
   goDetalhes(String slug) {

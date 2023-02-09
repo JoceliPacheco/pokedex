@@ -39,11 +39,27 @@ mixin _$HomeController on HomeControllerBase, Store {
     });
   }
 
+  final _$loadingAtom = Atom(name: 'HomeControllerBase.loading');
+
+  @override
+  bool get loading {
+    _$loadingAtom.reportRead();
+    return super.loading;
+  }
+
+  @override
+  set loading(bool value) {
+    _$loadingAtom.reportWrite(value, super.loading, () {
+      super.loading = value;
+    });
+  }
+
   @override
   String toString() {
     return '''
 listaPokemon: ${listaPokemon},
-offset: ${offset}
+offset: ${offset},
+loading: ${loading}
     ''';
   }
 }
