@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:pokedex/helpers/utils.dart';
 import 'package:pokedex/shared/models/pokemon.dart';
 
-class CardListPokemon extends StatelessWidget {
+class CardGridPokemon extends StatelessWidget {
   final Pokemon pokemon;
   final Function onTap;
-  CardListPokemon(
+  CardGridPokemon(
     this.pokemon, {
     Key key,
     this.onTap,
@@ -17,14 +17,8 @@ class CardListPokemon extends StatelessWidget {
     return Card(
       elevation: 2,
       child: ListTile(
-        leading: Padding(
-          padding: const EdgeInsets.only(top: 30),
-          child: Text(pokemon.nome),
-        ),
-        trailing: Padding(
-          padding: const EdgeInsets.only(top: 30),
-          child: Text(pokemon.tipos.first.nome),
-        ),
+        leading: Text(pokemon.nome),
+        trailing: Text(pokemon.tipos.first.nome),
         title: Center(
           child: CachedNetworkImage(
             imageUrl: getPathPhoto(pokemon.id),

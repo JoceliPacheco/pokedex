@@ -3,7 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:pokedex/modules/home/home_controller.dart';
 import 'package:pokedex/shared/components/pokemon/card_list_pokemon.dart';
-import 'package:pokedex/shared/components/pokemon/simple_content/simple_content_widget.dart';
+import 'package:pokedex/shared/components/simple_content/simple_content_widget.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);
