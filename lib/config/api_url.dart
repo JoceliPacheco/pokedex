@@ -6,4 +6,10 @@ abstract class ApiUrl {
         path: 'pokemon',
         httpMethod: 'GET',
       );
+
+  static ApiUrlMethod getPokemon(String slug) => ApiUrlMethod(
+        baseUrl: 'https://pokeapi.co/api/v2/',
+        path: 'pokemon/$slug',
+        httpMethod: 'GET',
+      );
 }

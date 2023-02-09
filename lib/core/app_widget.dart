@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
 import 'package:pokedex/core/app_controller.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 class AppWidget extends StatefulWidget {
   const AppWidget({Key key}) : super(key: key);
@@ -63,8 +64,8 @@ class _AppWidgetState extends State<AppWidget> {
       ],
       localizationsDelegates: [
         // ... app-specific localization delegate[s] here
-        // GlobalMaterialLocalizations.delegate,
-        //GlobalWidgetsLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
       ],
       supportedLocales: [Locale('pt', 'BR')],
       builder: (context, child) => MediaQuery(

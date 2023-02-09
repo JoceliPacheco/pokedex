@@ -15,4 +15,12 @@ class PokemonRepository {
       },
     ).then((data) => Pokemon.fromList(data['results']));
   }
+
+  Future<Pokemon> getPokemon(String slug) async {
+    return await _api
+        .request(
+          ApiUrl.getPokemon(slug),
+        )
+        .then((data) => Pokemon.fromJson(data));
+  }
 }

@@ -21,4 +21,13 @@ abstract class HomeControllerBase with Store {
     listaPokemon = await pokemonRepository.getListaPokemon(offset, limit);
     offset += limit;
   }
+
+  goDetalhes(String slug) {
+    Modular.to.pushNamed(
+      '/detalhes',
+      arguments: {
+        'slug': slug,
+      },
+    );
+  }
 }

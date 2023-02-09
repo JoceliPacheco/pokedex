@@ -1,4 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:pokedex/helpers/tranformers.dart';
+import 'package:pokedex/shared/models/habilidade.dart';
+import 'package:pokedex/shared/models/tipo.dart';
 
 part 'pokemon.g.dart';
 
@@ -7,8 +10,22 @@ class Pokemon {
   @JsonKey(name: 'name')
   String nome;
 
+  @JsonKey(name: 'id', fromJson: dynamicToString)
+  String id;
+
+  @JsonKey(name: 'abilities')
+  List<Habilidade> habilidades;
+
+  @JsonKey(name: 'types')
+  List<Tipo> tipos;
+
   Pokemon({
     this.nome,
+    this.id,
+
+    //
+    this.habilidades: const [],
+    this.tipos: const [],
   });
 
   static List<Pokemon> fromList(List<dynamic> list) {
