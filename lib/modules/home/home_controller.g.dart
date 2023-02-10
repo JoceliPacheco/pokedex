@@ -54,12 +54,42 @@ mixin _$HomeController on HomeControllerBase, Store {
     });
   }
 
+  final _$modeVIewListAtom = Atom(name: 'HomeControllerBase.modeVIewList');
+
+  @override
+  bool get modeVIewList {
+    _$modeVIewListAtom.reportRead();
+    return super.modeVIewList;
+  }
+
+  @override
+  set modeVIewList(bool value) {
+    _$modeVIewListAtom.reportWrite(value, super.modeVIewList, () {
+      super.modeVIewList = value;
+    });
+  }
+
+  final _$HomeControllerBaseActionController =
+      ActionController(name: 'HomeControllerBase');
+
+  @override
+  void changeModeView() {
+    final _$actionInfo = _$HomeControllerBaseActionController.startAction(
+        name: 'HomeControllerBase.changeModeView');
+    try {
+      return super.changeModeView();
+    } finally {
+      _$HomeControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''
 listaPokemon: ${listaPokemon},
 offset: ${offset},
-loading: ${loading}
+loading: ${loading},
+modeVIewList: ${modeVIewList}
     ''';
   }
 }

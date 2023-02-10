@@ -18,6 +18,14 @@ abstract class HomeControllerBase with Store {
   @observable
   bool loading = false;
 
+  @observable
+  bool modeVIewList = false;
+
+  @action
+  void changeModeView() {
+    modeVIewList = !modeVIewList;
+  }
+
   int limit = 20;
 
   void loadPokemon() async {
