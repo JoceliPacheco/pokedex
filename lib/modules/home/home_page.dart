@@ -47,12 +47,16 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        bottomOpacity: 0.0,
+        elevation: 0.0,
         actions: [
           IconButton(
             onPressed: () => _controller.changeModeView(),
             icon: Observer(
               builder: (context) => Icon(
-                !_controller.modeVIewList ? Icons.list : Icons.grid_3x3,
+                !_controller.modeVIewList ? Icons.list : Icons.grid_4x4_sharp,
+                color: Colors.grey,
               ),
             ),
           )

@@ -29,33 +29,92 @@ class _DetalhePageState extends State<DetalhePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: widget.pokemon == null
-            ? null
-            : hexToColor(
-                corTipo[widget.pokemon.tipos.first.nome] ?? '#cccccc',
-              ),
-      ),
-      body: Observer(
-        builder: (context) {
-          return Column(
-            children: [
-              Center(
-                child: SvgPicture.network(getPhoto(widget.pokemon.id)),
-              ),
-              Row(
-                children: widget.pokemon.habilidades
-                    .map((e) => Text(' (' + e.nome + ') '))
-                    .toList(),
-              ),
-              Row(
-                children: widget.pokemon.tipos
-                    .map((e) => Text(' (' + e.nome + ') '))
-                    .toList(),
-              )
-            ],
-          );
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: darken(
+          hexToColor(
+            corTipo[widget.pokemon.tipos.first.nome] ?? '#cccccc',
+          ),
+        ),
+        child: Icon(Icons.close),
+        onPressed: () {
+          Modular.to.pop();
         },
+      ),
+      body: Column(
+        mainAxisSize: MainAxisSize.max,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(300),
+                  color: hexToColor(
+                    corTipo[widget.pokemon.tipos.first.nome] ?? '#cccccc',
+                  ),
+                ),
+                child: Column(
+                  children: [
+                    SvgPicture.network(
+                      getPhoto(widget.pokemon.id),
+                    ),
+                    Card(
+                      elevation: 8,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              widget.pokemon.nome.toUpperCase(),
+                              style: TextStyle(
+                                color: darken(
+                                  hexToColor(
+                                    corTipo[widget.pokemon.tipos.first.nome] ??
+                                        '#cccccc',
+                                  ),
+                                ),
+                                fontWeight: FontWeight.bold,
+                                fontSize: 32,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Divider(),
+          Text('Habilidade(s)'),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: widget.pokemon.habilidades
+                .map((e) => Card(
+                        child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(e.nome),
+                    )))
+                .toList(),
+          ),
+          Divider(),
+          Text('Tipo(s)'),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: widget.pokemon.tipos
+                .map((e) => Card(
+                        child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(e.nome),
+                    )))
+                .toList(),
+          ),
+        ],
       ),
     );
   }
