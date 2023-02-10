@@ -42,11 +42,11 @@ abstract class HomeControllerBase with Store {
     print('Qtd => ${listaPokemon.length}');
   }
 
-  void goDetalhes(String slug) {
+  void goDetalhes(Pokemon pokemon) {
     Modular.to.pushNamed(
       '/detalhes',
       arguments: {
-        'slug': slug,
+        'pokemon': pokemon,
       },
     );
   }

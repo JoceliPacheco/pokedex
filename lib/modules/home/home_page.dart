@@ -78,7 +78,7 @@ class _HomePageState extends State<HomePage> {
         itemBuilder: (BuildContext context, int index) => CardGridPokemon(
           _controller.listaPokemon[index],
           onTap: () => _controller.goDetalhes(
-            _controller.listaPokemon[index].nome,
+            _controller.listaPokemon[index],
           ),
         ),
         staggeredTileBuilder: (int index) => new StaggeredTile.fit(2),
@@ -92,9 +92,7 @@ class _HomePageState extends State<HomePage> {
         children: _controller.listaPokemon
             .map((pokemon) => CardListPokemon(
                   pokemon,
-                  onTap: () => _controller.goDetalhes(
-                    pokemon.nome,
-                  ),
+                  onTap: () => _controller.goDetalhes(pokemon),
                 ))
             .toList(),
       );

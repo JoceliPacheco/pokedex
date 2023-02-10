@@ -28,6 +28,7 @@ dependencies:
   dio: ^4.0.0
   mobx: ^1.0.2+2
   cached_network_image: ^2.2.0+1
+  flutter_svg: ^0.19.3
   flutter_localizations: 
     sdk: flutter
   flutter:

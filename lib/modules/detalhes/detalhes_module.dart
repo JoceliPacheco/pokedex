@@ -13,7 +13,7 @@ class DetalhesModule extends ChildModule {
         ModularRouter(
           Modular.initialRoute,
           child: (_, args) => DetalhePage(
-            slug: args.data['slug'],
+            pokemon: args.data['pokemon'],
           ),
         ),
       ];

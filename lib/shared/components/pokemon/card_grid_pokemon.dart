@@ -37,7 +37,7 @@ class CardGridPokemon extends StatelessWidget {
                     ),
                   ),
                   child: CachedNetworkImage(
-                    imageUrl: getPathPhoto(pokemon.id),
+                    imageUrl: getThumb(pokemon.id),
                     placeholder: (context, url) => CircularProgressIndicator(),
                     errorWidget: (context, url, error) => Icon(Icons.error),
                   ),
