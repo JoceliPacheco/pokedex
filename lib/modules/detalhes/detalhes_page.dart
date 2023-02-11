@@ -4,6 +4,7 @@ import 'package:pokedex/helpers/utils.dart';
 import 'package:pokedex/modules/detalhes/detalhes_controller.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:pokedex/shared/components/images/foto_pokemon.dart';
 import 'package:pokedex/shared/components/label/nome_pokemon.dart';
 import 'package:pokedex/shared/constants/type_collor.dart';
 import 'package:pokedex/shared/models/pokemon.dart';
@@ -61,9 +62,7 @@ class _DetalhePageState extends State<DetalhePage> {
                     children: [
                       Hero(
                         tag: widget.pokemon.id,
-                        child: SvgPicture.network(
-                          getPhoto(widget.pokemon.id),
-                        ),
+                        child: FotoPokemon(widget.pokemon),
                       ),
                       Card(
                         elevation: 8,
