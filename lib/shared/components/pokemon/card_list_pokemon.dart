@@ -1,6 +1,4 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:pokedex/helpers/utils.dart';
 import 'package:pokedex/shared/components/images/foto_pokemon.dart';
 import 'package:pokedex/shared/components/label/nome_pokemon.dart';
 import 'package:pokedex/shared/models/pokemon.dart';

@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 import 'package:pokedex/shared/models/pokemon.dart';
@@ -8,6 +9,10 @@ class HomeController = HomeControllerBase with _$HomeController;
 
 abstract class HomeControllerBase with Store {
   GetPokemonService _getPokemon = Modular.get();
+
+  ScrollController scroll;
+
+  double tolerancia = 50;
 
   @observable
   List<Pokemon> listaPokemon = [];
@@ -24,6 +29,19 @@ abstract class HomeControllerBase with Store {
   @action
   void changeModeView() {
     modeVIewList = !modeVIewList;
+  }
+
+  initScroll() {
+    scroll = ScrollController();
+    scroll.addListener(handleScroll);
+  }
+
+  handleScroll() {
+    if (scroll.position.pixels + tolerancia >=
+            scroll.position.maxScrollExtent &&
+        !loading) {
+      loadPokemon();
+    }
   }
 
   int limit = 20;

@@ -17,30 +17,19 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final HomeController _controller = Modular.get();
 
-  ScrollController _scrollController;
-
   double tolerancia = 50;
 
   @override
   void initState() {
     super.initState();
     _controller.loadPokemon();
-    _scrollController = ScrollController();
-    _scrollController.addListener(handleScroll);
+    _controller.initScroll();
   }
 
   @override
   void dispose() {
     super.dispose();
-    _scrollController.dispose();
-  }
-
-  handleScroll() {
-    if (_scrollController.position.pixels + tolerancia >=
-            _scrollController.position.maxScrollExtent &&
-        !_controller.loading) {
-      _controller.loadPokemon();
-    }
+    _controller.scroll.dispose();
   }
 
   @override
@@ -79,7 +68,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget get modoGrid => StaggeredGridView.countBuilder(
-        controller: _scrollController,
+        controller: _controller.scroll,
         padding: EdgeInsets.only(bottom: 40),
         crossAxisCount: 4,
         itemCount: _controller.listaPokemon.length,
@@ -96,7 +85,7 @@ class _HomePageState extends State<HomePage> {
 
   Widget get modoList => ListView(
         padding: EdgeInsets.only(bottom: 40),
-        controller: _scrollController,
+        controller: _controller.scroll,
         children: _controller.listaPokemon
             .map((pokemon) => CardListPokemon(
                   pokemon,

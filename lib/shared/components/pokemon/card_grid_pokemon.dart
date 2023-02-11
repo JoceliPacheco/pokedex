@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:pokedex/helpers/collor.dart';
-import 'package:pokedex/helpers/utils.dart';
 import 'package:pokedex/shared/components/images/foto_pokemon.dart';
 import 'package:pokedex/shared/components/label/nome_pokemon.dart';
 import 'package:pokedex/shared/constants/type_collor.dart';
