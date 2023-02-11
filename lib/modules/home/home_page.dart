@@ -84,8 +84,8 @@ class _HomePageState extends State<HomePage> {
       );
 
   Widget get modoList => ListView(
-        padding: EdgeInsets.only(bottom: 40),
         controller: _controller.scroll,
+        padding: EdgeInsets.only(bottom: 40),
         children: _controller.listaPokemon
             .map((pokemon) => CardListPokemon(
                   pokemon,

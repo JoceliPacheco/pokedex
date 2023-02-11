@@ -60,7 +60,10 @@ class _DetalhePageState extends State<DetalhePage> {
                     children: [
                       Hero(
                         tag: widget.pokemon.id,
-                        child: FotoPokemon(widget.pokemon),
+                        child: FotoPokemon(
+                          widget.pokemon,
+                          svg: true,
+                        ),
                       ),
                       Card(
                         elevation: 8,
