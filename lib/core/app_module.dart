@@ -5,6 +5,7 @@ import 'package:pokedex/core/app_widget.dart';
 import 'package:pokedex/modules/detalhes/detalhes_module.dart';
 import 'package:pokedex/modules/home/home_module.dart';
 import 'package:pokedex/shared/repositories/pokemon_repository.dart';
+import 'package:pokedex/shared/services/alert/alert_service.dart';
 import 'package:pokedex/shared/services/http/api_request.dart';
 
 class AppModule extends MainModule {
@@ -19,6 +20,7 @@ class AppModule extends MainModule {
 
         //Services
         Bind((i) => ApiRequest()),
+        Bind((i) => AlertService()),
       ];
 
   @override

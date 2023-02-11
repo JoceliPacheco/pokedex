@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -52,19 +53,28 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       body: Observer(
-          builder: (context) => SimpleContentContainer(
-                expand: true,
-                child: _controller.modeVIewList ? modoList : modoGrid,
-                bottom: _controller.loading
-                    ? Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: CircularProgressIndicator(),
-                      )
-                    : null,
-              )
-          /*  , */
-          ),
+        builder: (context) {
+          return SimpleContentContainer(
+            expand: true,
+            child: _builBody,
+            bottom: _controller.loading
+                ? Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: CircularProgressIndicator(),
+                  )
+                : null,
+          );
+        },
+      ),
     );
+  }
+
+  Widget get _builBody {
+    if (!_controller.loading && _controller.listaPokemon.isEmpty) {
+      return _emptyList;
+    }
+
+    return _controller.modeVIewList ? modoList : modoGrid;
   }
 
   Widget get modoGrid => StaggeredGridView.countBuilder(
@@ -92,5 +102,29 @@ class _HomePageState extends State<HomePage> {
                   onTap: () => _controller.goDetalhes(pokemon),
                 ))
             .toList(),
+      );
+
+  Widget get _emptyList => Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.wifi_off,
+              size: 48,
+            ),
+            Text(
+              'Sem resultados',
+              style: TextStyle(
+                fontSize: 12,
+              ),
+            ),
+            TextButton(
+              onPressed: () => _controller.loadPokemon(),
+              child: Text('Tentar novamente'),
+            )
+          ],
+        ),
       );
 }

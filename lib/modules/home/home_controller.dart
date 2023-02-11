@@ -46,7 +46,7 @@ abstract class HomeControllerBase with Store {
 
   int limit = 20;
 
-  void loadPokemon() async {
+  Future loadPokemon() async {
     List<Pokemon> _lista = listaPokemon;
 
     loading = true;
