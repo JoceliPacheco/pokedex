@@ -30,7 +30,6 @@ class _AppWidgetState extends State<AppWidget> {
           if (snapshot.hasData) {
             return _buildApp(context);
           }
-          //return SplashScreen();
           return Center(
             child: CircularProgressIndicator(),
           );
@@ -51,19 +50,10 @@ class _AppWidgetState extends State<AppWidget> {
       title: 'POKEDEX',
       debugShowCheckedModeBanner: false,
       initialRoute: '/home',
-      themeMode: ThemeMode.system,
+      themeMode:
+          ThemeMode.system, // usa dark mode se o usuario usar no android dele
       onGenerateRoute: Modular.generateRoute,
-      navigatorObservers: [
-        /* AppRouteObserver(),
-        FirebaseAnalyticsObserver(
-            analytics: AnalyticsService.analytics,
-            onError: (e) {
-              print('####### ERRO WIDGET #######');
-              print(e);
-            }), */
-      ],
       localizationsDelegates: [
-        // ... app-specific localization delegate[s] here
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
       ],
@@ -74,7 +64,6 @@ class _AppWidgetState extends State<AppWidget> {
           child: child,
         ),
       ),
-      //theme: controller.themeData,
     );
   }
 }

@@ -47,6 +47,12 @@ class CardGridPokemon extends StatelessWidget {
               ),
               Center(
                 child: NomePokemon(pokemon),
+              ),
+              Center(
+                child: Text(
+                  pokemon.tipos.first.nome,
+                  style: TextStyle(color: Colors.grey),
+                ),
               )
             ],
           ),

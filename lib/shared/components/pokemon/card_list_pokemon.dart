@@ -19,23 +19,16 @@ class CardListPokemon extends StatelessWidget {
       child: Card(
         elevation: 2,
         child: ListTile(
-          leading: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              NomePokemon(
-                pokemon,
-                fontSize: 14,
-              ),
-              Text(
-                pokemon.tipos.first.nome,
-                style: TextStyle(color: Colors.grey),
-              ),
-            ],
+          title: NomePokemon(
+            pokemon,
+            fontSize: 14,
           ),
-          title: Container(
-            width: 80,
-            height: 80,
+          subtitle: Text(
+            pokemon.tipos.first.nome,
+            style: TextStyle(color: Colors.grey),
+          ),
+          trailing: Hero(
+            tag: pokemon.id,
             child: FotoPokemon(pokemon),
           ),
         ),
