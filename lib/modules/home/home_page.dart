@@ -66,8 +66,12 @@ class _HomePageState extends State<HomePage> {
           builder: (context) => SimpleContentContainer(
                 expand: true,
                 child: _controller.modeVIewList ? modoList : modoGrid,
-                bottom:
-                    _controller.loading ? CircularProgressIndicator() : null,
+                bottom: _controller.loading
+                    ? Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: CircularProgressIndicator(),
+                      )
+                    : null,
               )
           /*  , */
           ),

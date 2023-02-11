@@ -1,8 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:pokedex/helpers/tranformers.dart';
 import 'package:pokedex/helpers/utils.dart';
-import 'package:pokedex/shared/constants/type_collor.dart';
+import 'package:pokedex/shared/components/label/nome_pokemon.dart';
 import 'package:pokedex/shared/models/pokemon.dart';
 
 class CardListPokemon extends StatelessWidget {
@@ -25,16 +24,7 @@ class CardListPokemon extends StatelessWidget {
             width: 100,
             child: Padding(
               padding: const EdgeInsets.only(top: 30),
-              child: Text(
-                pokemon.nome.toUpperCase(),
-                style: TextStyle(
-                    color: darken(
-                      hexToColor(
-                        corTipo[pokemon.tipos.first.nome] ?? '#cccccc',
-                      ),
-                    ),
-                    fontWeight: FontWeight.bold),
-              ),
+              child: NomePokemon(pokemon),
             ),
           ),
           trailing: Container(

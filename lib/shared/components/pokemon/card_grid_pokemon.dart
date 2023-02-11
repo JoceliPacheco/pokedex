@@ -1,7 +1,8 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:pokedex/helpers/tranformers.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:pokedex/helpers/collor.dart';
 import 'package:pokedex/helpers/utils.dart';
+import 'package:pokedex/shared/components/label/nome_pokemon.dart';
 import 'package:pokedex/shared/constants/type_collor.dart';
 import 'package:pokedex/shared/models/pokemon.dart';
 
@@ -16,6 +17,7 @@ class CardGridPokemon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double size = MediaQuery.of(context).size.width / 4;
     return GestureDetector(
       onTap: onTap,
       child: Card(
@@ -30,30 +32,26 @@ class CardGridPokemon extends StatelessWidget {
             children: [
               Center(
                 child: Container(
+                  width: size,
+                  height: size,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(50),
                     color: hexToColor(
-                      corTipo[pokemon.tipos.first.nome] ?? '#cccccc',
+                      corByTipo[pokemon.tipos.first.nome] ?? '#cccccc',
                     ),
                   ),
-                  child: CachedNetworkImage(
-                    imageUrl: getThumb(pokemon.id),
-                    placeholder: (context, url) => CircularProgressIndicator(),
-                    errorWidget: (context, url, error) => Icon(Icons.error),
+                  child: Hero(
+                    tag: pokemon.id,
+                    child: SvgPicture.network(
+                      getPhoto(pokemon.id),
+                      width: 50,
+                      height: 50,
+                    ),
                   ),
                 ),
               ),
               Center(
-                child: Text(
-                  pokemon.nome.toUpperCase(),
-                  style: TextStyle(
-                      color: darken(
-                        hexToColor(
-                          corTipo[pokemon.tipos.first.nome] ?? '#cccccc',
-                        ),
-                      ),
-                      fontWeight: FontWeight.bold),
-                ),
+                child: NomePokemon(pokemon),
               )
             ],
           ),

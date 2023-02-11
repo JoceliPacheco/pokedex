@@ -1,4 +1,4 @@
-Map corTipo = {
+Map corByTipo = {
   'bug': '#d6ebdc',
   'grass': '#d6ebdc',
   'water': '#dfecf5',
